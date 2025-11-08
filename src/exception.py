@@ -1,6 +1,7 @@
 import sys
 import traceback
 from typing import Any
+from src.logger import logging
 
 def error_message_detail(error: Exception, error_detail: Any) -> str:
     """
