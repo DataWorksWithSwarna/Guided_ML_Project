@@ -1,13 +1,13 @@
-import sys
+"""import sys
 import traceback
 from typing import Any
 from src.logger import logging
 
 def error_message_detail(error: Exception, error_detail: Any) -> str:
-    """
+
     Built a detailed error message including filename and line number.
 
-    """
+
     # exc_info returns (type, value, tb); tb is at index 2
     _, _, tb = error_detail.exc_info()
     # tb may be None (but here it's expected to be present)
@@ -39,6 +39,28 @@ class CustomException(Exception):
     def __str__(self) -> str:
         return self.error_message
 
-"""Basically we do this to get a detailed version of an error message at that perticlar
+Basically we do this to get a detailed version of an error message at that perticlar
 line and the possible cause for the error which helps in debugging huge codes in huge projects
-especially when multiple people are working on it and could help in logging."""
+especially when multiple people are working on it and could help in logging.""" 
+
+import sys
+from src.logger import logging
+
+def error_message_detail(error,error_detail:sys):
+    _,_,exc_tb=error_detail.exc_info()
+    file_name=exc_tb.tb_frame.f_code.co_filename
+    error_message="Error occured in python script name [{0}] line number [{1}] error message[{2}]".format(
+     file_name,exc_tb.tb_lineno,str(error))
+
+    return error_message
+
+    
+
+class CustomException(Exception):
+    def __init__(self,error_message,error_detail:sys):
+        super().__init__(error_message)
+        self.error_message=error_message_detail(error_message,error_detail=error_detail)
+    
+    def __str__(self):
+        return self.error_message
+    
