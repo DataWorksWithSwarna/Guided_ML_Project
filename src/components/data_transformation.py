@@ -79,7 +79,7 @@ class DataTransformation:
                     ("cat_pipeline", cat_pipeline, available_cat_cols)
                 ],
                 remainder="drop"  # drop other unused columns
-            )
+        )
 
             return preprocessor
 
