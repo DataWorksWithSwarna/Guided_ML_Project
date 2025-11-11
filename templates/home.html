@@ -1,0 +1,73 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Souq.com Ecommerce Business Performance Indicator</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Souq.com Ecommerce Business Performance Prediction</legend>
+        </h1>
+        <div class="mb-3">
+            <label class="form-label">Product_Category</label>
+            <select class="form-control" name="Product_Category" placeholder="Enter you Product_Category" required>
+                <option class="placeholder" selected disabled value="">Select your Product_Category</option>
+                <option value="Watches">
+                    Watches
+                </option>
+                <option value="Eyewear">
+                    Eyewear
+                </option>
+                <option value="Athletic Shoes">
+                    Athletic Shoes
+                </option>
+                <option value="Casual & Dress Shoes">
+                    Casual & Dress Shoes    
+                </option>
+                <option value="Wallets">
+                    Wallets
+                </option>
+                <option value="Perfumes & Fragrances">
+                    Perfumes & Fragrances
+                </option>
+                <option value="Sportswear">
+                    Sportswear
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Payment_Method</label>
+            <select class="form-control" name="Payment_Method" placeholder="Enter your Payment_Method" required>
+                <option class="placeholder" selected disabled value="">Select Payment_Method</option>
+                <option value="COD">
+                    COD
+                </option>
+                <option value="Credit Card">
+                    Credit Card
+                </option>
+                <option value="Debit Card">
+                    Debit Card
+                </option>
+                <option value="Net Banking">
+                    Net Banking
+                </option>
+                <option value="UPI">
+                    UPI
+                </option>
+                <option value="Wallet">
+                    Wallet
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Quantity_Purchased</label>
+            <input class="form-control" type="number" name="Quantity_Purchased"
+                placeholder="Enter the Quantity_Purchased" min='1' max='10' />
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict your Sales" required />
+        </div>
+    </form>
+    <h2>
+       THE  prediction is {{results}}
+    </h2>
+   <body>
+</html>
